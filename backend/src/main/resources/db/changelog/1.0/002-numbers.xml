@@ -1,0 +1,43 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="maxim.kukharev">
+        <preConditions onFail="MARK_RAN" onError="MARK_RAN">
+            <not>
+                <tableExists tableName="NUMBERS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="NUMBERS">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="generated_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="maxim.kukharev">
+        <preConditions onFail="MARK_RAN" onError="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_USER_NUMBERS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint
+                baseTableName="NUMBERS"
+                baseColumnNames="user_id"
+                constraintName="FK_USER_NUMBERS"
+                referencedTableName="USERS"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
