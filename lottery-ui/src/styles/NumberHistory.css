@@ -1,0 +1,53 @@
+.number-history-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 2rem;
+}
+
+.number-history-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.number-history-container .generator,
+.number-history-container .history {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+}
+
+.number-history-container .generator button,
+.number-history-container .history ul {
+    width: 100%;
+}
+
+.number-history-container .history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.number-history-container .history ul li {
+    background: white;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.number-history-container .generator button {
+    padding: 0.5rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.number-history-container .generator button:hover {
+    background-color: #0056b3;
+}
